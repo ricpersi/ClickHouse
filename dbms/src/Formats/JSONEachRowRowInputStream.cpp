@@ -213,6 +213,7 @@ void JSONEachRowRowInputStream::readNestedData(const String & name, MutableColum
 bool JSONEachRowRowInputStream::read(MutableColumns & columns, RowReadExtension & ext)
 {
     skipWhitespaceIfAny(istr);
+    skipSquareBracketIfAny(istr);
 
     /// We consume ;, or \n before scanning a new row, instead scanning to next row at the end.
     /// The reason is that if we want an exact number of rows read with LIMIT x
