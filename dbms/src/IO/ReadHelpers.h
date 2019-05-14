@@ -837,6 +837,13 @@ inline void skipWhitespaceIfAny(ReadBuffer & buf)
         ++buf.position();
 }
 
+/// Skip square bracket characters.
+inline void skipSquareBracketIfAny(ReadBuffer & buf)
+{
+    while (!buf.eof() && (*buf.position() == '['))
+        ++buf.position();
+}
+
 /// Skips json value.
 void skipJSONField(ReadBuffer & buf, const StringRef & name_of_field);
 
